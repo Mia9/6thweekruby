@@ -1,0 +1,17 @@
+<!-- since the books is an array, iterate the array -->
+
+<% if @books.any? %>
+	<% @books.each do |book| %>
+		<p>
+		Title: <%= book.title %>
+		<br>
+		Author: <%= book.author %>
+		</p>
+	<% end %>
+<% else %>
+		<p>
+			No books found.
+		</p>
+<%end%>
+
+<a href="/">Homepage</a>
