@@ -1,0 +1,11 @@
+<br>
+<h1>Edit</h1>
+<form action="/books/update/<%= @book.id%>" method="post">
+	<label for="title">Title to edit:</label>
+	<input type="text" name="title" required>
+	<label for="author">Author to edit:</label>
+	<input type="text" name="author" required>
+	<input type="submit" value="Edit">
+</form>
+<br>
+<a href="/books">List all Books Registered</a>

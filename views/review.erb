@@ -1,0 +1,11 @@
+<br>
+<h1>Leave a review</h1>
+<form action="/books/reviews/<%= @book.id%>" method="post">
+	<label for="name">Username:</label>
+	<input type="text" name="name" required>
+	<label for="score">Score:</label>
+	<input type="text" name="score" required>
+	<input type="submit" value="Submit">
+</form>
+<br>
+<a href="/books">List all Books Registered</a>
