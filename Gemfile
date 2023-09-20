@@ -11,6 +11,9 @@ gem 'pg'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 
+# For You're are log in display
+gem 'sinatra-flash'
+
 # User Authentication
 gem 'bcrypt'
 

@@ -1,4 +1,11 @@
-<h1>Hello Sinatra</h1>
-<a href="/register">Register</a>
-<br>
-<a href="/login">Login</a>
+<h1>Mini Library Sinatra</h1>
+
+<% if user_signed_in? %>
+	<h3>Hello there! <%= current_user.username%></h3>
+	<a href="/books">List of all Books Registered</a>
+<%else%>
+	<h3>Welcome!</h3>
+<%end%>
+
+
+

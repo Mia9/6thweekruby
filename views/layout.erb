@@ -6,6 +6,22 @@
   <title>Elevate - Sinatra ActiveRecord</title>
 </head>
 <body>
+  <% if flash[:message]%>
+      <%= flash[:message]%>
+  <%end%>
+  <br>
   <%= yield %>
+  <% if user_signed_in? %>
+    <form action="/logout" method="post">
+      <input type="submit" value="Logout">
+    </form>
+  <%else%>
+    <br>
+    <a href="/register">Register</a>or
+    <a href="/login">Login</a>
+  <%end%>
 </body>
 </html>
+
+<!-- this layout html can make one method or text to appear in all other erb or html files (very convenient) -->
+<!-- e.g= Logout button appearing in all html files by only write once in Layout erb -->

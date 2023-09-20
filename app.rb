@@ -1,10 +1,13 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'bcrypt'
+require 'sinatra/flash'
 require_relative 'models/book'
 require_relative 'models/review'
 require_relative 'models/user'
 enable :sessions
+register Sinatra::Flash
+
 
 get '/' do
 	erb :index
@@ -95,7 +98,12 @@ post '/register' do
 end
 
 get '/login' do
-	erb :login
+	if current_user
+		flash[:message] = "You're logged in."
+		redirect '/'
+	else
+		erb :login
+	end
 end
 
 post '/login' do
@@ -110,4 +118,14 @@ end
 
 def current_user
 	@current_user ||= User.find_by(id: session[:user_id])
+end
+
+def user_signed_in?
+	!current_user.nil?
+end
+
+
+post '/logout' do
+	session[:user_id] = nil
+	redirect '/'
 end
