@@ -1,21 +1,27 @@
 <h1>Title: <%= @book.title %></h1>
 <h3>Author: <%= @book.author %></h3>
 <h4>Reviews: </h4>
-<br>
 
+<% if @book.reviews.any? %>
+	<p>
+	<% @book.reviews.each do |review| %>
+		<%= review.content %> by <%= review.name %>
+	<%end%>
+<%end%>
+	</p>
+
+
+<br>
 <form action="/books/edit/<%= @book.id%>" method="post">
 	<input type="submit" value="Edit">
 </form>
-
 <br>
 <form action="/books/delete/<%= @book.id%>" method="post">
 	<input type="submit" value="Delete">
 </form>
-
 <br>
-<form action="" method="post">
+<form action="/books/review/<%= @book.id%>" method="post">
 	<input type="submit" value="New Review">
 </form>
-
 <br>
 <a href="/">Homepage</a>
