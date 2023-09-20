@@ -10,6 +10,11 @@ get '/' do
 	erb :index
 end
 #----------BOOK_PART------------
+
+get '/add_book' do
+	erb :add_book
+end
+
 post '/add-book' do
 	@book = Book.create(title: params[:title], author: params[:author])
 	if @book.save
@@ -97,7 +102,7 @@ post '/login' do
 	@user = User.find_by(username: params[:username])
 	if @user && @user.authenticate(params[:password])
 		session[:user_id] = @user.id
-		redirect '/books'
+		redirect '/add_book'
 	else
 		erb :login
 	end
